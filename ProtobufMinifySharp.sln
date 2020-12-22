@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtobufMinifySharp.Core", "ProtobufMinifySharp.Core\ProtobufMinifySharp.Core.csproj", "{0F4FCA80-D36B-496A-B8AD-8D52ECF33894}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtobufMinifySharp.Sample", "ProtobufMinifySharp.Sample\ProtobufMinifySharp.Sample.csproj", "{890AF36A-E776-440E-B111-ADF5F531BB25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtobufMinifySharp.Tests", "ProtobufMinifySharp.Tests\ProtobufMinifySharp.Tests.csproj", "{B3F04D8D-A28B-48E0-9A13-A539B46A968D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F4FCA80-D36B-496A-B8AD-8D52ECF33894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F4FCA80-D36B-496A-B8AD-8D52ECF33894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F4FCA80-D36B-496A-B8AD-8D52ECF33894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F4FCA80-D36B-496A-B8AD-8D52ECF33894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{890AF36A-E776-440E-B111-ADF5F531BB25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{890AF36A-E776-440E-B111-ADF5F531BB25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{890AF36A-E776-440E-B111-ADF5F531BB25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{890AF36A-E776-440E-B111-ADF5F531BB25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F04D8D-A28B-48E0-9A13-A539B46A968D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F04D8D-A28B-48E0-9A13-A539B46A968D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F04D8D-A28B-48E0-9A13-A539B46A968D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F04D8D-A28B-48E0-9A13-A539B46A968D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
