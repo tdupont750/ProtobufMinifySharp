@@ -22,17 +22,18 @@ public static partial class AddressBookReflection {
   static AddressBookReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "ChFBZGRyZXNzQm9vay5wcm90byLDAQoGUGVyc29uEgwKBG5hbWUYASABKAkS",
+          "ChFBZGRyZXNzQm9vay5wcm90byLVAQoGUGVyc29uEgwKBG5hbWUYASABKAkS",
           "CgoCaWQYAiABKAUSDQoFZW1haWwYAyABKAkSIwoGcGhvbmVzGAQgAygLMhMu",
-          "UGVyc29uLlBob25lTnVtYmVyGj4KC1Bob25lTnVtYmVyEg4KBm51bWJlchgB",
-          "IAEoCRIfCgR0eXBlGAIgASgOMhEuUGVyc29uLlBob25lVHlwZSIrCglQaG9u",
-          "ZVR5cGUSCgoGTU9CSUxFEAASCAoESE9NRRABEggKBFdPUksQAiImCgtBZGRy",
-          "ZXNzQm9vaxIXCgZwZW9wbGUYASADKAsyBy5QZXJzb24iKAoMQW5vdGhlclRo",
-          "aW5nEgwKBG5hbWUYASABKAkSCgoCaWQYAiABKAU="));
+          "UGVyc29uLlBob25lTnVtYmVyEhAKCGhhc1RoaW5nGAUgASgIGj4KC1Bob25l",
+          "TnVtYmVyEg4KBm51bWJlchgBIAEoCRIfCgR0eXBlGAIgASgOMhEuUGVyc29u",
+          "LlBob25lVHlwZSIrCglQaG9uZVR5cGUSCgoGTU9CSUxFEAASCAoESE9NRRAB",
+          "EggKBFdPUksQAiImCgtBZGRyZXNzQm9vaxIXCgZwZW9wbGUYASADKAsyBy5Q",
+          "ZXJzb24iKAoMQW5vdGhlclRoaW5nEgwKBG5hbWUYASABKAkSCgoCaWQYAiAB",
+          "KAU="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::Person), global::Person.Parser, new[]{ "Name", "Id", "Email", "Phones" }, null, new[]{ typeof(global::Person.Types.PhoneType) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Person.Types.PhoneNumber), global::Person.Types.PhoneNumber.Parser, new[]{ "Number", "Type" }, null, null, null, null)}),
+          new pbr::GeneratedClrTypeInfo(typeof(global::Person), global::Person.Parser, new[]{ "Name", "Id", "Email", "Phones", "HasThing" }, null, new[]{ typeof(global::Person.Types.PhoneType) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Person.Types.PhoneNumber), global::Person.Types.PhoneNumber.Parser, new[]{ "Number", "Type" }, null, null, null, null)}),
           new pbr::GeneratedClrTypeInfo(typeof(global::AddressBook), global::AddressBook.Parser, new[]{ "People" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::AnotherThing), global::AnotherThing.Parser, new[]{ "Name", "Id" }, null, null, null, null)
         }));
@@ -67,6 +68,7 @@ public sealed partial class Person : pb::IMessage<Person>
     id_ = other.id_;
     email_ = other.email_;
     phones_ = other.phones_.Clone();
+    hasThing_ = other.hasThing_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
   public Person Clone() {
@@ -136,6 +138,25 @@ public sealed partial class Person : pb::IMessage<Person>
   public pbc::RepeatedField<global::Person.Types.PhoneNumber> Phones {
     get { return phones_; }
   }
+
+  /// <summary>Field number for the "hasThing" field.</summary>
+  public const int HasThingFieldNumber = 5;
+  private readonly static bool HasThingDefaultValue = false;
+
+  private bool hasThing_;
+  public bool HasThing {
+    get { if ((_hasBits0 & 2) != 0) { return hasThing_; } else { return HasThingDefaultValue; } }
+    set {
+      _hasBits0 |= 2;
+      hasThing_ = value;
+    }
+  }
+  public bool HasHasThing {
+    get { return (_hasBits0 & 2) != 0; }
+  }
+  public void ClearHasThing() {
+    _hasBits0 &= ~2;
+  }
   public override bool Equals(object other) {
     return Equals(other as Person);
   }
@@ -150,6 +171,7 @@ public sealed partial class Person : pb::IMessage<Person>
     if (Id != other.Id) return false;
     if (Email != other.Email) return false;
     if(!phones_.Equals(other.phones_)) return false;
+    if (HasThing != other.HasThing) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
   public override int GetHashCode() {
@@ -158,6 +180,7 @@ public sealed partial class Person : pb::IMessage<Person>
     if (HasId) hash ^= Id.GetHashCode();
     if (HasEmail) hash ^= Email.GetHashCode();
     hash ^= phones_.GetHashCode();
+    if (HasHasThing) hash ^= HasThing.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -183,6 +206,10 @@ public sealed partial class Person : pb::IMessage<Person>
       output.WriteString(Email);
     }
     phones_.WriteTo(output, _repeated_phones_codec);
+    if (HasHasThing) {
+      output.WriteRawTag(40);
+      output.WriteBool(HasThing);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -204,6 +231,10 @@ public sealed partial class Person : pb::IMessage<Person>
       output.WriteString(Email);
     }
     phones_.WriteTo(ref output, _repeated_phones_codec);
+    if (HasHasThing) {
+      output.WriteRawTag(40);
+      output.WriteBool(HasThing);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -222,6 +253,9 @@ public sealed partial class Person : pb::IMessage<Person>
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
     }
     size += phones_.CalculateSize(_repeated_phones_codec);
+    if (HasHasThing) {
+      size += 1 + 1;
+    }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -241,6 +275,9 @@ public sealed partial class Person : pb::IMessage<Person>
       Email = other.Email;
     }
     phones_.Add(other.phones_);
+    if (other.HasHasThing) {
+      HasThing = other.HasThing;
+    }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
   public void MergeFrom(pb::CodedInputStream input) {
@@ -267,6 +304,10 @@ public sealed partial class Person : pb::IMessage<Person>
         }
         case 34: {
           phones_.AddEntriesFrom(input, _repeated_phones_codec);
+          break;
+        }
+        case 40: {
+          HasThing = input.ReadBool();
           break;
         }
       }
@@ -296,6 +337,10 @@ public sealed partial class Person : pb::IMessage<Person>
         }
         case 34: {
           phones_.AddEntriesFrom(ref input, _repeated_phones_codec);
+          break;
+        }
+        case 40: {
+          HasThing = input.ReadBool();
           break;
         }
       }

@@ -67,7 +67,8 @@ namespace ProtobufMinifySharp.Sample
                                 Number = "555-1234",
                                 Type = Person.Types.PhoneType.Mobile
                             }
-                        }
+                        },
+                        HasThing = true
                     }
                 }
             };

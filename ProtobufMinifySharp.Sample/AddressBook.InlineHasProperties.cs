@@ -85,6 +85,9 @@ public sealed partial class Person : pb::IMessage<Person>
   public Person Clone() {
     return new Person(this);
   }
+
+  /// <summary>Field number for the "name" field.</summary>
+  public const int NameFieldNumber = 1;
   private readonly static string NameDefaultValue = "";
 
   private string name_;
@@ -95,16 +98,14 @@ public sealed partial class Person : pb::IMessage<Person>
       name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
     }
   }
-  /// <summary>Gets whether the "name" field is set</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public bool HasName {
-    get { return name_ != null; }
-  }
   /// <summary>Clears the value of the "name" field</summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public void ClearName() {
     name_ = null;
   }
+
+  /// <summary>Field number for the "id" field.</summary>
+  public const int IdFieldNumber = 2;
   private readonly static int IdDefaultValue = 0;
 
   private int id_;
@@ -116,16 +117,14 @@ public sealed partial class Person : pb::IMessage<Person>
       id_ = value;
     }
   }
-  /// <summary>Gets whether the "id" field is set</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public bool HasId {
-    get { return (_hasBits0 & 1) != 0; }
-  }
   /// <summary>Clears the value of the "id" field</summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public void ClearId() {
     _hasBits0 &= ~1;
   }
+
+  /// <summary>Field number for the "email" field.</summary>
+  public const int EmailFieldNumber = 3;
   private readonly static string EmailDefaultValue = "";
 
   private string email_;
@@ -136,16 +135,14 @@ public sealed partial class Person : pb::IMessage<Person>
       email_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
     }
   }
-  /// <summary>Gets whether the "email" field is set</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public bool HasEmail {
-    get { return email_ != null; }
-  }
   /// <summary>Clears the value of the "email" field</summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public void ClearEmail() {
     email_ = null;
   }
+
+  /// <summary>Field number for the "phones" field.</summary>
+  public const int PhonesFieldNumber = 4;
   private static readonly pb::FieldCodec<global::Person.Types.PhoneNumber> _repeated_phones_codec
       = pb::FieldCodec.ForMessage(34, global::Person.Types.PhoneNumber.Parser);
   private readonly pbc::RepeatedField<global::Person.Types.PhoneNumber> phones_ = new pbc::RepeatedField<global::Person.Types.PhoneNumber>();
@@ -153,6 +150,9 @@ public sealed partial class Person : pb::IMessage<Person>
   public pbc::RepeatedField<global::Person.Types.PhoneNumber> Phones {
     get { return phones_; }
   }
+
+  /// <summary>Field number for the "hasThing" field.</summary>
+  public const int HasThingFieldNumber = 5;
   private readonly static bool HasThingDefaultValue = false;
 
   private bool hasThing_;
@@ -163,11 +163,6 @@ public sealed partial class Person : pb::IMessage<Person>
       _hasBits0 |= 2;
       hasThing_ = value;
     }
-  }
-  /// <summary>Gets whether the "hasThing" field is set</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public bool HasHasThing {
-    get { return (_hasBits0 & 2) != 0; }
   }
   /// <summary>Clears the value of the "hasThing" field</summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -199,11 +194,11 @@ public sealed partial class Person : pb::IMessage<Person>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override int GetHashCode() {
     int hash = 1;
-    if (HasName) hash ^= Name.GetHashCode();
-    if (HasId) hash ^= Id.GetHashCode();
-    if (HasEmail) hash ^= Email.GetHashCode();
+    if (name_ != null) hash ^= Name.GetHashCode();
+    if ((_hasBits0 & 1) != 0) hash ^= Id.GetHashCode();
+    if (email_ != null) hash ^= Email.GetHashCode();
     hash ^= phones_.GetHashCode();
-    if (HasHasThing) hash ^= HasThing.GetHashCode();
+    if ((_hasBits0 & 2) != 0) hash ^= HasThing.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -246,20 +241,20 @@ public sealed partial class Person : pb::IMessage<Person>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-    if (HasName) {
+    if (name_ != null) {
       output.WriteRawTag(10);
       output.WriteString(Name);
     }
-    if (HasId) {
+    if ((_hasBits0 & 1) != 0) {
       output.WriteRawTag(16);
       output.WriteInt32(Id);
     }
-    if (HasEmail) {
+    if (email_ != null) {
       output.WriteRawTag(26);
       output.WriteString(Email);
     }
     phones_.WriteTo(ref output, _repeated_phones_codec);
-    if (HasHasThing) {
+    if ((_hasBits0 & 2) != 0) {
       output.WriteRawTag(40);
       output.WriteBool(HasThing);
     }
@@ -272,17 +267,17 @@ public sealed partial class Person : pb::IMessage<Person>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int CalculateSize() {
     int size = 0;
-    if (HasName) {
+    if (name_ != null) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
     }
-    if (HasId) {
+    if ((_hasBits0 & 1) != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
     }
-    if (HasEmail) {
+    if (email_ != null) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
     }
     size += phones_.CalculateSize(_repeated_phones_codec);
-    if (HasHasThing) {
+    if ((_hasBits0 & 2) != 0) {
       size += 1 + 1;
     }
     if (_unknownFields != null) {
@@ -296,17 +291,17 @@ public sealed partial class Person : pb::IMessage<Person>
     if (other == null) {
       return;
     }
-    if (other.HasName) {
+    if (other.name_ != null) {
       Name = other.Name;
     }
-    if (other.HasId) {
+    if ((other._hasBits0 & 1) != 0) {
       Id = other.Id;
     }
-    if (other.HasEmail) {
+    if (other.email_ != null) {
       Email = other.Email;
     }
     phones_.Add(other.phones_);
-    if (other.HasHasThing) {
+    if ((other._hasBits0 & 2) != 0) {
       HasThing = other.HasThing;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -432,6 +427,9 @@ public sealed partial class Person : pb::IMessage<Person>
       public PhoneNumber Clone() {
         return new PhoneNumber(this);
       }
+
+      /// <summary>Field number for the "number" field.</summary>
+      public const int NumberFieldNumber = 1;
       private readonly static string NumberDefaultValue = "";
 
       private string number_;
@@ -442,16 +440,14 @@ public sealed partial class Person : pb::IMessage<Person>
           number_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
         }
       }
-      /// <summary>Gets whether the "number" field is set</summary>
-      [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-      public bool HasNumber {
-        get { return number_ != null; }
-      }
       /// <summary>Clears the value of the "number" field</summary>
       [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
       public void ClearNumber() {
         number_ = null;
       }
+
+      /// <summary>Field number for the "type" field.</summary>
+      public const int TypeFieldNumber = 2;
       private readonly static global::Person.Types.PhoneType TypeDefaultValue = global::Person.Types.PhoneType.Mobile;
 
       private global::Person.Types.PhoneType type_;
@@ -462,11 +458,6 @@ public sealed partial class Person : pb::IMessage<Person>
           _hasBits0 |= 1;
           type_ = value;
         }
-      }
-      /// <summary>Gets whether the "type" field is set</summary>
-      [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-      public bool HasType {
-        get { return (_hasBits0 & 1) != 0; }
       }
       /// <summary>Clears the value of the "type" field</summary>
       [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -495,8 +486,8 @@ public sealed partial class Person : pb::IMessage<Person>
       [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
       public override int GetHashCode() {
         int hash = 1;
-        if (HasNumber) hash ^= Number.GetHashCode();
-        if (HasType) hash ^= Type.GetHashCode();
+        if (number_ != null) hash ^= Number.GetHashCode();
+        if ((_hasBits0 & 1) != 0) hash ^= Type.GetHashCode();
         if (_unknownFields != null) {
           hash ^= _unknownFields.GetHashCode();
         }
@@ -530,11 +521,11 @@ public sealed partial class Person : pb::IMessage<Person>
       #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
       void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-        if (HasNumber) {
+        if (number_ != null) {
           output.WriteRawTag(10);
           output.WriteString(Number);
         }
-        if (HasType) {
+        if ((_hasBits0 & 1) != 0) {
           output.WriteRawTag(16);
           output.WriteEnum((int) Type);
         }
@@ -547,10 +538,10 @@ public sealed partial class Person : pb::IMessage<Person>
       [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
       public int CalculateSize() {
         int size = 0;
-        if (HasNumber) {
+        if (number_ != null) {
           size += 1 + pb::CodedOutputStream.ComputeStringSize(Number);
         }
-        if (HasType) {
+        if ((_hasBits0 & 1) != 0) {
           size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
         }
         if (_unknownFields != null) {
@@ -564,10 +555,10 @@ public sealed partial class Person : pb::IMessage<Person>
         if (other == null) {
           return;
         }
-        if (other.HasNumber) {
+        if (other.number_ != null) {
           Number = other.Number;
         }
-        if (other.HasType) {
+        if ((other._hasBits0 & 1) != 0) {
           Type = other.Type;
         }
         _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -663,6 +654,9 @@ public sealed partial class AddressBook : pb::IMessage<AddressBook>
   public AddressBook Clone() {
     return new AddressBook(this);
   }
+
+  /// <summary>Field number for the "people" field.</summary>
+  public const int PeopleFieldNumber = 1;
   private static readonly pb::FieldCodec<global::Person> _repeated_people_codec
       = pb::FieldCodec.ForMessage(10, global::Person.Parser);
   private readonly pbc::RepeatedField<global::Person> people_ = new pbc::RepeatedField<global::Person>();
@@ -824,6 +818,9 @@ public sealed partial class AnotherThing : pb::IMessage<AnotherThing>
   public AnotherThing Clone() {
     return new AnotherThing(this);
   }
+
+  /// <summary>Field number for the "name" field.</summary>
+  public const int NameFieldNumber = 1;
   private readonly static string NameDefaultValue = "";
 
   private string name_;
@@ -834,16 +831,14 @@ public sealed partial class AnotherThing : pb::IMessage<AnotherThing>
       name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
     }
   }
-  /// <summary>Gets whether the "name" field is set</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public bool HasName {
-    get { return name_ != null; }
-  }
   /// <summary>Clears the value of the "name" field</summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public void ClearName() {
     name_ = null;
   }
+
+  /// <summary>Field number for the "id" field.</summary>
+  public const int IdFieldNumber = 2;
   private readonly static int IdDefaultValue = 0;
 
   private int id_;
@@ -854,11 +849,6 @@ public sealed partial class AnotherThing : pb::IMessage<AnotherThing>
       _hasBits0 |= 1;
       id_ = value;
     }
-  }
-  /// <summary>Gets whether the "id" field is set</summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public bool HasId {
-    get { return (_hasBits0 & 1) != 0; }
   }
   /// <summary>Clears the value of the "id" field</summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -887,8 +877,8 @@ public sealed partial class AnotherThing : pb::IMessage<AnotherThing>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override int GetHashCode() {
     int hash = 1;
-    if (HasName) hash ^= Name.GetHashCode();
-    if (HasId) hash ^= Id.GetHashCode();
+    if (name_ != null) hash ^= Name.GetHashCode();
+    if ((_hasBits0 & 1) != 0) hash ^= Id.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -922,11 +912,11 @@ public sealed partial class AnotherThing : pb::IMessage<AnotherThing>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-    if (HasName) {
+    if (name_ != null) {
       output.WriteRawTag(10);
       output.WriteString(Name);
     }
-    if (HasId) {
+    if ((_hasBits0 & 1) != 0) {
       output.WriteRawTag(16);
       output.WriteInt32(Id);
     }
@@ -939,10 +929,10 @@ public sealed partial class AnotherThing : pb::IMessage<AnotherThing>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int CalculateSize() {
     int size = 0;
-    if (HasName) {
+    if (name_ != null) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
     }
-    if (HasId) {
+    if ((_hasBits0 & 1) != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
     }
     if (_unknownFields != null) {
@@ -956,10 +946,10 @@ public sealed partial class AnotherThing : pb::IMessage<AnotherThing>
     if (other == null) {
       return;
     }
-    if (other.HasName) {
+    if (other.name_ != null) {
       Name = other.Name;
     }
-    if (other.HasId) {
+    if ((other._hasBits0 & 1) != 0) {
       Id = other.Id;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);

@@ -31,9 +31,6 @@ public sealed partial class Person : pb::IMessage<Person>
       name_ = value;
     }
   }
-  public bool HasName {
-    get { return name_ != null; }
-  }
 
   private int id_;
   public int Id {
@@ -43,9 +40,6 @@ public sealed partial class Person : pb::IMessage<Person>
       id_ = value;
     }
   }
-  public bool HasId {
-    get { return (_hasBits0 & 1) != 0; }
-  }
 
   private string email_;
   public string Email {
@@ -54,14 +48,20 @@ public sealed partial class Person : pb::IMessage<Person>
       email_ = value;
     }
   }
-  public bool HasEmail {
-    get { return email_ != null; }
-  }
   private static readonly pb::FieldCodec<global::Person.Types.PhoneNumber> _repeated_phones_codec
       = pb::FieldCodec.ForMessage(34, global::Person.Types.PhoneNumber.Parser);
   private readonly pbc::RepeatedField<global::Person.Types.PhoneNumber> phones_ = new pbc::RepeatedField<global::Person.Types.PhoneNumber>();
   public pbc::RepeatedField<global::Person.Types.PhoneNumber> Phones {
     get { return phones_; }
+  }
+
+  private bool hasThing_;
+  public bool HasThing {
+    get { if ((_hasBits0 & 2) != 0) { return hasThing_; } else { return false; } }
+    set {
+      _hasBits0 |= 2;
+      hasThing_ = value;
+    }
   }
   public override bool Equals(object other) {
     return Equals(other as Person);
@@ -77,14 +77,16 @@ public sealed partial class Person : pb::IMessage<Person>
     if (Id != other.Id) return false;
     if (Email != other.Email) return false;
     if(!phones_.Equals(other.phones_)) return false;
+    if (HasThing != other.HasThing) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
   public override int GetHashCode() {
     int hash = 1;
-    if (HasName) hash ^= Name.GetHashCode();
-    if (HasId) hash ^= Id.GetHashCode();
-    if (HasEmail) hash ^= Email.GetHashCode();
+    if (name_ != null) hash ^= Name.GetHashCode();
+    if ((_hasBits0 & 1) != 0) hash ^= Id.GetHashCode();
+    if (email_ != null) hash ^= Email.GetHashCode();
     hash ^= phones_.GetHashCode();
+    if ((_hasBits0 & 2) != 0) hash ^= HasThing.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -124,6 +126,10 @@ public sealed partial class Person : pb::IMessage<Person>
           phones_.AddEntriesFrom(input, _repeated_phones_codec);
           break;
         }
+        case 40: {
+          HasThing = input.ReadBool();
+          break;
+        }
       }
     }
   #endif
@@ -151,6 +157,10 @@ public sealed partial class Person : pb::IMessage<Person>
         }
         case 34: {
           phones_.AddEntriesFrom(ref input, _repeated_phones_codec);
+          break;
+        }
+        case 40: {
+          HasThing = input.ReadBool();
           break;
         }
       }
@@ -187,9 +197,6 @@ public sealed partial class Person : pb::IMessage<Person>
           number_ = value;
         }
       }
-      public bool HasNumber {
-        get { return number_ != null; }
-      }
 
       private global::Person.Types.PhoneType type_;
       public global::Person.Types.PhoneType Type {
@@ -198,9 +205,6 @@ public sealed partial class Person : pb::IMessage<Person>
           _hasBits0 |= 1;
           type_ = value;
         }
-      }
-      public bool HasType {
-        get { return (_hasBits0 & 1) != 0; }
       }
       public override bool Equals(object other) {
         return Equals(other as PhoneNumber);
@@ -218,8 +222,8 @@ public sealed partial class Person : pb::IMessage<Person>
       }
       public override int GetHashCode() {
         int hash = 1;
-        if (HasNumber) hash ^= Number.GetHashCode();
-        if (HasType) hash ^= Type.GetHashCode();
+        if (number_ != null) hash ^= Number.GetHashCode();
+        if ((_hasBits0 & 1) != 0) hash ^= Type.GetHashCode();
         if (_unknownFields != null) {
           hash ^= _unknownFields.GetHashCode();
         }
@@ -390,9 +394,6 @@ public sealed partial class AnotherThing : pb::IMessage<AnotherThing>
       name_ = value;
     }
   }
-  public bool HasName {
-    get { return name_ != null; }
-  }
 
   private int id_;
   public int Id {
@@ -401,9 +402,6 @@ public sealed partial class AnotherThing : pb::IMessage<AnotherThing>
       _hasBits0 |= 1;
       id_ = value;
     }
-  }
-  public bool HasId {
-    get { return (_hasBits0 & 1) != 0; }
   }
   public override bool Equals(object other) {
     return Equals(other as AnotherThing);
@@ -421,8 +419,8 @@ public sealed partial class AnotherThing : pb::IMessage<AnotherThing>
   }
   public override int GetHashCode() {
     int hash = 1;
-    if (HasName) hash ^= Name.GetHashCode();
-    if (HasId) hash ^= Id.GetHashCode();
+    if (name_ != null) hash ^= Name.GetHashCode();
+    if ((_hasBits0 & 1) != 0) hash ^= Id.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }

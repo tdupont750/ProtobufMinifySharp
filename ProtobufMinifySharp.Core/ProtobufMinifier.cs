@@ -7,7 +7,7 @@ namespace ProtobufMinifySharp
 {
     public static class ProtobufMinifier
     {
-        public const MinifySettings AllMinifiers = (MinifySettings) 4095;
+        public const MinifySettings AllMinifiers = (MinifySettings) 8192 - 1;
         
         private static readonly MinifySettings[] MinifySettingsValues = Enum.GetValues<MinifySettings>();
 
@@ -30,6 +30,10 @@ namespace ProtobufMinifySharp
             {
                 switch (settings)
                 {
+                    case MinifySettings.InlineDefaultValues:
+                        return InlineDefaultValuesMinifier.Instance;
+                    case MinifySettings.InlineHasProperties:
+                        return InlineHasPropertiesMinifier.Instance;
                     case MinifySettings.StripPreconditions:
                         return StripPreconditionsMinifier.Instance;
                     case MinifySettings.StripDebuggerAttributes:
@@ -38,8 +42,6 @@ namespace ProtobufMinifySharp
                         return StripFieldNumbersMinifier.Instance;
                     case MinifySettings.StripClearMethods:
                         return StripClearMethodsMinifier.Instance;
-                    case MinifySettings.InlineDefaultValues:
-                        return InlineDefaultValuesMinifier.Instance;
                     case MinifySettings.StripDescriptors:
                         return StripDescriptorsMinifier.Instance;
                     case MinifySettings.StripToStringOverrides:

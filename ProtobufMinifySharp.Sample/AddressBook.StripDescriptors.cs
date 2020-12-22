@@ -40,6 +40,7 @@ public sealed partial class Person : pb::IMessage<Person>
     id_ = other.id_;
     email_ = other.email_;
     phones_ = other.phones_.Clone();
+    hasThing_ = other.hasThing_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -128,6 +129,30 @@ public sealed partial class Person : pb::IMessage<Person>
     get { return phones_; }
   }
 
+  /// <summary>Field number for the "hasThing" field.</summary>
+  public const int HasThingFieldNumber = 5;
+  private readonly static bool HasThingDefaultValue = false;
+
+  private bool hasThing_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool HasThing {
+    get { if ((_hasBits0 & 2) != 0) { return hasThing_; } else { return HasThingDefaultValue; } }
+    set {
+      _hasBits0 |= 2;
+      hasThing_ = value;
+    }
+  }
+  /// <summary>Gets whether the "hasThing" field is set</summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool HasHasThing {
+    get { return (_hasBits0 & 2) != 0; }
+  }
+  /// <summary>Clears the value of the "hasThing" field</summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void ClearHasThing() {
+    _hasBits0 &= ~2;
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as Person);
@@ -145,6 +170,7 @@ public sealed partial class Person : pb::IMessage<Person>
     if (Id != other.Id) return false;
     if (Email != other.Email) return false;
     if(!phones_.Equals(other.phones_)) return false;
+    if (HasThing != other.HasThing) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -155,6 +181,7 @@ public sealed partial class Person : pb::IMessage<Person>
     if (HasId) hash ^= Id.GetHashCode();
     if (HasEmail) hash ^= Email.GetHashCode();
     hash ^= phones_.GetHashCode();
+    if (HasHasThing) hash ^= HasThing.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -184,6 +211,10 @@ public sealed partial class Person : pb::IMessage<Person>
       output.WriteString(Email);
     }
     phones_.WriteTo(output, _repeated_phones_codec);
+    if (HasHasThing) {
+      output.WriteRawTag(40);
+      output.WriteBool(HasThing);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -206,6 +237,10 @@ public sealed partial class Person : pb::IMessage<Person>
       output.WriteString(Email);
     }
     phones_.WriteTo(ref output, _repeated_phones_codec);
+    if (HasHasThing) {
+      output.WriteRawTag(40);
+      output.WriteBool(HasThing);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -225,6 +260,9 @@ public sealed partial class Person : pb::IMessage<Person>
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
     }
     size += phones_.CalculateSize(_repeated_phones_codec);
+    if (HasHasThing) {
+      size += 1 + 1;
+    }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -246,6 +284,9 @@ public sealed partial class Person : pb::IMessage<Person>
       Email = other.Email;
     }
     phones_.Add(other.phones_);
+    if (other.HasHasThing) {
+      HasThing = other.HasThing;
+    }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 
@@ -276,6 +317,10 @@ public sealed partial class Person : pb::IMessage<Person>
           phones_.AddEntriesFrom(input, _repeated_phones_codec);
           break;
         }
+        case 40: {
+          HasThing = input.ReadBool();
+          break;
+        }
       }
     }
   #endif
@@ -304,6 +349,10 @@ public sealed partial class Person : pb::IMessage<Person>
         }
         case 34: {
           phones_.AddEntriesFrom(ref input, _repeated_phones_codec);
+          break;
+        }
+        case 40: {
+          HasThing = input.ReadBool();
           break;
         }
       }
