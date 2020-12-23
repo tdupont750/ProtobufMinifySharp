@@ -7,7 +7,7 @@ namespace ProtobufMinifySharp
 {
     public static class ProtobufMinifier
     {
-        public const MinifySettings AllMinifiers = (MinifySettings) 8192 - 1;
+        public const MinifySettings AllMinifiers = (MinifySettings) 16384 - 1;
         
         private static readonly MinifySettings[] MinifySettingsValues = Enum.GetValues<MinifySettings>();
 
@@ -48,6 +48,8 @@ namespace ProtobufMinifySharp
                         return StripToStringOverridesMinifier.Instance;
                     case MinifySettings.StripDefaultConstructor:
                         return StripDefaultConstructorMinifier.Instance;
+                    case MinifySettings.StripParserProperty:
+                        return StripParserPropertyMinifier.Instance;
                     case MinifySettings.EmptyClone:
                         return EmptyCloneMinifier.Instance;
                     case MinifySettings.EmptyWriteTo:

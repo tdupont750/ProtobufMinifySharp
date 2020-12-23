@@ -15,10 +15,9 @@ public sealed partial class Person : pb::IMessage<Person>
     , pb::IBufferMessage
 #endif
 {
-  private static readonly pb::MessageParser<Person> _parser = new pb::MessageParser<Person>(() => new Person());
+  public static readonly pb::MessageParser<Person> Parser = new pb::MessageParser<Person>(() => new Person());
   private pb::UnknownFieldSet _unknownFields;
   private int _hasBits0;
-  public static pb::MessageParser<Person> Parser { get { return _parser; } }
   pbr::MessageDescriptor pb::IMessage.Descriptor {
     get { throw new System.NotImplementedException(); }
   }
@@ -181,10 +180,9 @@ public sealed partial class Person : pb::IMessage<Person>
         , pb::IBufferMessage
     #endif
     {
-      private static readonly pb::MessageParser<PhoneNumber> _parser = new pb::MessageParser<PhoneNumber>(() => new PhoneNumber());
+      public static readonly pb::MessageParser<PhoneNumber> Parser = new pb::MessageParser<PhoneNumber>(() => new PhoneNumber());
       private pb::UnknownFieldSet _unknownFields;
       private int _hasBits0;
-      public static pb::MessageParser<PhoneNumber> Parser { get { return _parser; } }
       pbr::MessageDescriptor pb::IMessage.Descriptor {
         get { throw new System.NotImplementedException(); }
       }
@@ -293,9 +291,8 @@ public sealed partial class AddressBook : pb::IMessage<AddressBook>
     , pb::IBufferMessage
 #endif
 {
-  private static readonly pb::MessageParser<AddressBook> _parser = new pb::MessageParser<AddressBook>(() => new AddressBook());
+  public static readonly pb::MessageParser<AddressBook> Parser = new pb::MessageParser<AddressBook>(() => new AddressBook());
   private pb::UnknownFieldSet _unknownFields;
-  public static pb::MessageParser<AddressBook> Parser { get { return _parser; } }
   pbr::MessageDescriptor pb::IMessage.Descriptor {
     get { throw new System.NotImplementedException(); }
   }
@@ -378,10 +375,9 @@ public sealed partial class AnotherThing : pb::IMessage<AnotherThing>
     , pb::IBufferMessage
 #endif
 {
-  private static readonly pb::MessageParser<AnotherThing> _parser = new pb::MessageParser<AnotherThing>(() => new AnotherThing());
+  public static readonly pb::MessageParser<AnotherThing> Parser = new pb::MessageParser<AnotherThing>(() => new AnotherThing());
   private pb::UnknownFieldSet _unknownFields;
   private int _hasBits0;
-  public static pb::MessageParser<AnotherThing> Parser { get { return _parser; } }
   pbr::MessageDescriptor pb::IMessage.Descriptor {
     get { throw new System.NotImplementedException(); }
   }

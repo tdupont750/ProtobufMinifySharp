@@ -14,9 +14,10 @@ namespace ProtobufMinifySharp
         StripDescriptors            = 64,
         StripToStringOverrides      = 128,
         StripDefaultConstructor     = 256,
-        EmptyClone                  = 512,
-        EmptyWriteTo                = 1024,
-        EmptyCalculateSize          = 2048,
-        EmptyMergeFrom              = 4096
+        StripParserProperty         = 512,
+        EmptyClone                  = 1024,
+        EmptyWriteTo                = 2048,
+        EmptyCalculateSize          = 4096,
+        EmptyMergeFrom              = 8192
     }
 }
