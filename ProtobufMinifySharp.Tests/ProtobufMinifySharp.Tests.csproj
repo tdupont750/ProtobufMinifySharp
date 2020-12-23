@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Include="..\ProtobufMinifySharp.Sample\AddressBook.All.cs">
+      <Compile Include="..\ProtobufMinifySharp.Sample\Generated\AddressBook.All.cs">
         <Link>AddressBook.All.cs</Link>
       </Compile>
       <Compile Include="..\ProtobufMinifySharp.Sample\SampleHelpers.cs">

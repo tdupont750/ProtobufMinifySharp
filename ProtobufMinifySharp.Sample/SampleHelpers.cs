@@ -6,6 +6,9 @@ namespace ProtobufMinifySharp.Sample
 {
     internal static class SampleHelpers
     {
+        public const string Generated = "Generated";
+        public const string AddressBook = "AddressBook";
+        
         public static string GetAncestorDir(string findFile)
         {
             var dir = Environment.CurrentDirectory;
@@ -26,7 +29,7 @@ namespace ProtobufMinifySharp.Sample
             var objDir = Path.Combine(rootDir, "obj");
             
             return Directory
-                .GetFiles(objDir, "AddressBook.cs", SearchOption.AllDirectories)
+                .GetFiles(objDir, $"{AddressBook}.cs", SearchOption.AllDirectories)
                 .First();
         }
 

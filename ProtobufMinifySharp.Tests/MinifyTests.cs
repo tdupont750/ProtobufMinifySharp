@@ -11,7 +11,7 @@ namespace ProtobufMinifySharp.Tests
         public void ParseFromDataFile()
         {
             var sampleRootDir = TestHelpers.GetSampleRootDir();
-            var dataPath = Path.Combine(sampleRootDir, "AddressBook.data");
+            var dataPath = Path.Combine(sampleRootDir, SampleHelpers.Generated, $"{SampleHelpers.AddressBook}.data");
             
             var data = File.ReadAllBytes(dataPath);
             var addressBook1 = AddressBook.Parser.ParseFrom(data);
@@ -24,11 +24,12 @@ namespace ProtobufMinifySharp.Tests
         public void CompareLengths()
         {
             var sampleRootDir = TestHelpers.GetSampleRootDir();
+            var generatedDir = Path.Combine(sampleRootDir, SampleHelpers.Generated);
             var addressBookPath = SampleHelpers.GetAddressBookPath(sampleRootDir);
             var addressBookLength = new FileInfo(addressBookPath).Length;
 
             var minifiedFiles = Directory
-                .GetFiles(sampleRootDir, "AddressBook.*.cs")
+                .GetFiles(generatedDir, $"{SampleHelpers.AddressBook}.*.cs")
                 .Select(f => new
                 {
                     Path = f,
@@ -36,12 +37,14 @@ namespace ProtobufMinifySharp.Tests
                 })
                 .OrderBy(f => f.Length)
                 .ToArray();
+            
+            Assert.NotEmpty(minifiedFiles);
 
             foreach (var file in minifiedFiles)
                 Assert.True(file.Length < addressBookLength, $"{file.Path} is larger than source");
 
             var smallestFileName = Path.GetFileName(minifiedFiles.First().Path);
-            Assert.Equal("AddressBook.All.cs", smallestFileName);
+            Assert.Equal($"{SampleHelpers.AddressBook}.All.cs", smallestFileName);
         }
     }
 }

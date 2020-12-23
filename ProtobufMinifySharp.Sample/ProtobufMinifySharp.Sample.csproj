@@ -29,8 +29,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="AddressBook.*.cs" />
-      <None Include="AddressBook.*.cs" />
+      <Compile Remove="Generated\AddressBook.*.cs" />
+      <None Include="Generated\AddressBook.*.cs" />
     </ItemGroup>
 
 </Project>
