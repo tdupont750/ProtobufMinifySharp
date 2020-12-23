@@ -80,18 +80,12 @@ namespace ProtobufMinifySharp
             if (minifiers == null || minifiers.Count == 0)
                 throw new ArgumentException("Minifiers required", nameof(minifiers));
 
-            var tree = CSharpSyntaxTree.ParseText(text);
-            var root = tree.GetRoot();
+            var root = CSharpSyntaxTree.ParseText(text).GetRoot();
 
             foreach (var minifier in minifiers)
                 root = minifier.Minify(root);
 
-            // Reattach the headers...is there really no better way to do this?
-            var rootText = root.ToString();
-            var rootSubstring = rootText.Substring(0, 10);
-            var startIndex = text.IndexOf(rootSubstring);
-            var startSubstring = text.Substring(0, startIndex);
-            return startSubstring + rootText;
+            return root.ToFullString();
         }
     }
 }
