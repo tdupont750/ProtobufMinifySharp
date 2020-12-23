@@ -16,20 +16,14 @@ namespace ProtobufMinifySharp.Minifiers
                 var declaration = root
                     .DescendantNodes()
                     .OfType<FieldDeclarationSyntax>()
-                    .FirstOrDefault(s =>
-                    {
-                        var str = s.ToString();
-                        return str.Contains("private readonly static ")
-                               && str.Contains("DefaultValue = ");
-                    });
+                    .FirstOrDefault(s => s.Declaration.Variables.Count == 1
+                                         && s.Declaration.Variables.Single().Identifier.Text.EndsWith("DefaultValue")
+                                         && s.Modifiers.ToString() == "private readonly static");
 
                 if (declaration == null)
                     return root;
 
-                var name = declaration
-                    .DescendantNodes()
-                    .OfType<VariableDeclaratorSyntax>()
-                    .First().Identifier.Text;
+                var name = declaration.Declaration.Variables.Single().Identifier.Text;
 
                 var value = declaration
                     .DescendantNodes()

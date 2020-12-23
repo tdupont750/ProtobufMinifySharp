@@ -12,8 +12,6 @@ namespace ProtobufMinifySharp.Minifiers
         
         public SyntaxNode Minify(SyntaxNode root)
         {
-            // return root;
-            
             while (true)
             {
                 // ReSharper disable once PossibleNullReferenceException
